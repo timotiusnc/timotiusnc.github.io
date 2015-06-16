@@ -1,0 +1,47 @@
+body {
+  background-color: #fcfcfc;
+}
+
+#top {
+  height: 192px;
+  background: #F44336;
+  color: #fff;
+}
+
+#top .name {
+  padding-top: 30px;
+  text-align: center;
+}
+
+#top .contacts {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#top .contacts a {
+  margin: 0 10px;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+@media (min-width: 960px) {
+  #top .name {
+    padding: 20px;
+    text-align: left;
+  }
+
+  #top .contacts{
+    margin-top: 25px;
+    text-align: right;
+  }
+}
+
+#content {
+  margin-top: -32px;
+}
+
+@media (min-width: 960px) {
+  #content {
+    margin-top: -64px;
+  }
+}
