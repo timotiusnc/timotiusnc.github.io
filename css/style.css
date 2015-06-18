@@ -4,7 +4,7 @@ body {
 
 #top {
   height: 192px;
-  background: #F44336;
+  background: #ff9800;
   color: #fff;
 }
 
@@ -37,6 +37,7 @@ body {
 }
 
 #content {
+  padding: 20px;
   margin-top: -32px;
 }
 
