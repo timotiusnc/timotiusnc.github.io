@@ -15,9 +15,18 @@ header {
   color: #fff;
 }
 
+
+header .row h5 {
+  margin: 0;
+}
+
 header .row .name {
-  padding-top: 30px;
+  margin-top: 25px;
   text-align: center;
+}
+
+header .row .name a {
+  color: #FFF;
 }
 
 header .row .contacts {
@@ -33,12 +42,12 @@ header .row .contacts a {
 
 @media (min-width: 992px) {
   header .row .name {
-    padding: 20px;
+    margin-top: 25px;
     text-align: left;
   }
 
   header .row .contacts{
-    margin-top: 25px;
+    margin-top: 20px;
     text-align: right;
   }
 }
@@ -64,6 +73,18 @@ main.container .card.showcase .card-content .showcase-logo img {
 }
 
 main.container .card.showcase .card-content .card-title {
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 992px) {
+  main.container .card.showcase .card-content .card-title {
+    line-height: 48px;
+    margin-bottom: 0;
+  }
+}
+
+main.container .card.showcase .card-content .card-title {
   color: #5C5C5C;
   font-weight: 400;
 }
@@ -86,6 +107,7 @@ main.container .card.showcase .card-content p {
 }
 
 footer {
+  padding: 25px 0;
   font-size: 14px;
 }
 
