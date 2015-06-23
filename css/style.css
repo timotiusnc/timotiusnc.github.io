@@ -1,48 +1,94 @@
 body {
-  background-color: #fcfcfc;
+  background-color: #F5F5F5;
+  font-size: 16px;
 }
 
-#top {
+a {
+  color: #FFAB40;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+header {
   height: 192px;
-  background: #ff9800;
+  background: #00BCD4;
   color: #fff;
 }
 
-#top .name {
+header .row .name {
   padding-top: 30px;
   text-align: center;
 }
 
-#top .contacts {
+header .row .contacts {
   margin-top: 20px;
   text-align: center;
 }
 
-#top .contacts a {
+header .row .contacts a {
   margin: 0 10px;
   font-size: 1.5em;
   color: #fff;
 }
 
-@media (min-width: 960px) {
-  #top .name {
+@media (min-width: 992px) {
+  header .row .name {
     padding: 20px;
     text-align: left;
   }
 
-  #top .contacts{
+  header .row .contacts{
     margin-top: 25px;
     text-align: right;
   }
 }
 
-#content {
-  padding: 20px;
-  margin-top: -32px;
+main.container {
+  margin-top: -44px;
+  max-width: 700px;
 }
 
-@media (min-width: 960px) {
-  #content {
+@media (min-width: 992px) {
+  main.container {
+    margin-top: -72px;
+  }
+}
+
+main.container .card.showcase .card-content .showcase-logo {
+  text-align: center;
+}
+
+main.container .card.showcase .card-content .showcase-logo img {
+  max-width: 75px;
+  height: auto;
+}
+
+main.container .card.showcase .card-content .card-title {
+  color: #5C5C5C;
+  font-weight: 400;
+}
+
+main.container .card.showcase .card-content .showcase-link {
+  color: #5C5C5C;
+  margin-top: -5px;
+  font-size: 14px;
+}
+
+main.container .card.showcase .card-content p {
+  margin: 20px 0 0 0;
+  color: #555;
+}
+
+@media (min-width: 992px) {
+  main #content {
     margin-top: -64px;
   }
+}
+
+footer {
+  font-size: 14px;
+}
+
+footer .container {
+  text-align: right;
 }
