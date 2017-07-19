@@ -13,6 +13,9 @@ var rev = require('gulp-rev');
 var collect = require('gulp-rev-collector');
 var rs = require('run-sequence');
 var del = require('del');
+var browserSync = require('browser-sync');
+var autoprefixer = require('gulp-autoprefixer');
+var reload = browserSync.reload;
 
 // Paths
 var app = 'app';
@@ -25,6 +28,18 @@ var appPaths = {
   html: app + '/**/*.html',
   img: app + '/img/*'
 };
+
+var AUTOPREFIXER_BROWSERS = [
+  'ie >= 10',
+  'ie_mob >= 10',
+  'ff >= 30',
+  'chrome >= 34',
+  'safari >= 7',
+  'opera >= 23',
+  'ios >= 7',
+  'android >= 4.4',
+  'bb >= 10'
+];
 
 // Functions
 function onError(err) {
@@ -43,6 +58,7 @@ gulp.task('sass', function() {
   gulp.src(appPaths.sass)
     .pipe(sass())
     .on('error', onError)
+    .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe(gulp.dest(app + '/styles'))
 });
 
@@ -51,6 +67,7 @@ gulp.task('sass-build', function() {
   gulp.src(appPaths.sass)
     .pipe(sass({ outputStyle: 'compressed' }))
     .on('error', onError)
+    .pipe(autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe(gulp.dest(app + '/styles'))
 });
 
@@ -70,7 +87,7 @@ gulp.task('useref', function() {
 
   return gulp.src(app + '/index.html')
     .pipe(assets)
-    .pipe(gulpif('*.js', uglify() ))
+    // .pipe(gulpif('*.js', uglify()))
     .pipe(rev()) //revision all assets (js, css)
     .pipe(gulp.dest(tmp)) //write rev'd assets to tmp
     .pipe(rev.manifest())
@@ -87,10 +104,23 @@ gulp.task('collect', function () {
     .pipe(gulp.dest(dist)) //write it to dist
 });
 
-// Watch Files For Changes
-gulp.task('watch', function() {
+// Watch files for changes & reload
+gulp.task('serve', ['sass'], function () {
+  browserSync({
+    notify: false,
+    // Customize the BrowserSync console logging prefix
+    logPrefix: 'PUMPKIN',
+    // Run as an https by uncommenting 'https: true'
+    // Note: this uses an unsigned certificate which on first access
+    //       will present a certificate warning in the browser.
+    // https: true,
+    server: ['app']
+  });
+
+  gulp.watch(['app/**/*.html'], reload);
+  gulp.watch(appPaths.sass, ['sass', reload]);
   gulp.watch(appPaths.js, ['jshint']);
-  gulp.watch(appPaths.sass, ['sass']);
+  gulp.watch(['app/img/**/*'], reload);
 });
 
 // Default Task
